@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.3'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java'
+	id 'application'
 	id 'com.palantir.docker' version '0.34.0'
 }
 
@@ -33,7 +34,27 @@ dependencies {
 	implementation 'junit:junit:4.13.2'
     	compileOnly 'org.projectlombok:lombok'
     	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-tomcat:2.7.3'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
+	compileOnly 'javax.servlet:servlet-api:2.5'
+
+}
+jar {
+	duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+	from {
+		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+	manifest {
+		attributes(
+				'Implementation-Title': 'Jar Making Exaple',
+				"Main-Class": "com.example.j8test.J8testApplication"
+		)
+	}
+
+	destinationDirectory = file("$rootDir/my-jar")
+	archivesBaseName = 'app'
 }
 
 tasks.named('test') {

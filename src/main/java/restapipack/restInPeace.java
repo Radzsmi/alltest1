@@ -4,7 +4,7 @@ import java.net.*;
 
 public class restInPeace {
     public static void main(String[] args) throws Exception {
-        String url = "https://catfact.ninja/fact";
+        String url = "http://localhost:8080/employees/";
         System.out.println(getHTML(url));
     }
         public static String getHTML (String urlToRead) throws Exception {
