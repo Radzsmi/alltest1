@@ -7,16 +7,23 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '8'
 
 repositories {
 	mavenCentral()
 }
 docker{
-			name "j8testapp"
-			dockerfile file('src/docker/Dockerfile')
-			copySpec.from(jar).rename(".*","app.jar")
-			buildArgs(['JAR_FILE' : "app.jar"])
+	name "mycoolapp"
+	dockerfile file('src/docker/Dockerfile')
+	copySpec.from(jar).rename(".*","app.jar")
+	buildArgs(['JAR_FILE': "app.jar"])
+}
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.mypackage.MyClass'
+        )
+    }
 }
 
 
@@ -24,6 +31,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'nl.tritales.springrestdoc:springrestdoc:0.1.0'
 	implementation 'junit:junit:4.13.2'
+    	compileOnly 'org.projectlombok:lombok'
+    	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
