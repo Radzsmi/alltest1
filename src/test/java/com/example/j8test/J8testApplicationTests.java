@@ -18,9 +18,19 @@ import static com.jayway.jsonpath.internal.path.PathCompiler.fail;
 class J8testApplicationTests {
 
 	@Test
-	public void lekeresteszt() throws Exception {
+	public void lekeresteszt(){
+		try {
+			J8testApplication.main(new String[]{"d"});
+		}catch(Exception e){
+			System.out.println("Baj van");
+		}
+
 			String urlToRead="http://localhost:8081/employees/";
-			System.out.println(getHTML(urlToRead));
+			try {
+				System.out.println(getHTML(urlToRead));
+			}catch (Exception e){
+				System.out.println("masikbaj");
+			}
 	}
 
 		public static String getHTML (String urlToRead) throws Exception {
