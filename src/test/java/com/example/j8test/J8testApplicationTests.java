@@ -19,8 +19,8 @@ class J8testApplicationTests {
 
 	@Test
 	public void lekeresteszt() throws Exception {
-			String urlToRead="http://localhost:8080/employees/";
-			System.out.println(getHTML(urlToRead));
+			//String urlToRead="http://localhost:8080/employees/";
+			//System.out.println(getHTML(urlToRead));
 	}
 
 		public static String getHTML (String urlToRead) throws Exception {
