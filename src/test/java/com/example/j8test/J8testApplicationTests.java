@@ -12,7 +12,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.io.*;
 import java.net.*;
-import static com.jayway.jsonpath.internal.path.PathCompiler.fail;
+
 
 @SpringBootTest
 class J8testApplicationTests {
@@ -27,7 +27,7 @@ class J8testApplicationTests {
 
 			String urlToRead="http://localhost:8081/employees/";
 			try {
-				System.out.println(getHTML(urlToRead));
+				Assert.assertTrue(getHTML(urlToRead).contains("gmail"));
 			}catch (Exception e){
 				System.out.println("masikbaj");
 			}
