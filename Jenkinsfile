@@ -1,16 +1,13 @@
-
+/**
 node {
     checkout scm
 
     def customImage = docker.build("radzsmir/springreadyapp")
 
-    customImage.inside {
-        sh 'docker image list'
-    }
 }
+**/
 
 
-/**
 pipeline {
   environment {
     imagename = "radzsmir/springreadyapp"
@@ -27,10 +24,9 @@ pipeline {
     }
         stage('Build Docker Image') {
           steps{
-    	sh 'sudo docker build -t radzsmir/springreadyapp:$BUILD_NUMBER .'
+    	sh 'sudo docker build -t radzsmir/springreadyapp'
             echo 'Build Image Completed'
           }
         }
         }
 }
-**/
