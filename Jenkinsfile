@@ -1,13 +1,12 @@
+
 node {
     checkout scm
 
-    docker.withRegistry('https://registry.hub.docker.com', 'Dockerhub') {
+    def customImage = docker.build("radzsmir/springreadyapp")
 
-        def customImage = docker.build("radzsmir/springreadyapp")
-
-        /* Push the container to the custom Registry */
-        customImage.push()
-    }
+    /**customImage.inside {
+        sh 'make test'
+    }**/
 }
 /**
 pipeline {
