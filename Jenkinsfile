@@ -4,10 +4,12 @@ node {
 
     def customImage = docker.build("radzsmir/springreadyapp")
 
-    /**customImage.inside {
-        sh 'make test'
-    }**/
+    customImage.inside {
+        sh 'docker image list'
+    }
 }
+
+
 /**
 pipeline {
   environment {
