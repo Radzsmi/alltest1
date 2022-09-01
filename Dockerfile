@@ -1,7 +1,8 @@
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} springreadyapp.jar
-
+##ARG JAR_FILE=build/libs/*.jar
+#COPY ${JAR_FILE} springreadyapp.jar
+EXPOSE 8081
+ADD build/libs/springreadyapp.jar springreadyapp.jar
 ENTRYPOINT ["java","-jar","/springreadyapp.jar"]
 #FROM openjdk:12-jdk-alpine
 #VOLUME /tmp
