@@ -8,25 +8,28 @@ node {
 **/
 
 
-pipeline {
-  environment {
-    imagename = "radzsmir/springreadyapp"
-    registryCredential = 'radzsmir'
-    dockerImage = ''
-  }
-  agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git([url: 'https://github.com/Radzsmi/alltest1.git', branch: 'main', credentialsId: 'radzsmir'])
+node {
+    def app
 
-      }
+    stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
+
+        checkout scm
     }
-        stage('Build Docker Image') {
-          steps{
-    	sh 'sudo docker build -t radzsmir/springreadyapp'
-            echo 'Build Image Completed'
-          }
+
+    stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+
+        app = docker.build("radzsmir/springreadyapp")
+    }
+
+    stage('Test image') {
+        /* Ideally, we would run a test framework against our image.
+         * For this example, we're using a Volkswagen-type approach ;-) */
+
+        app.inside {
+            sh 'echo "Tests passed"'
         }
-        }
-}
+    }
+    }
