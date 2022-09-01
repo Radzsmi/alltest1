@@ -1,0 +1,2 @@
+Docker run:https://blog.devgenius.io/dockerizing-spring-app-with-gradle-3b6fbd650bf7
+Root dirből cmdben futtatva fine a jar
