@@ -12,29 +12,11 @@ pipeline {
 
       }
     }
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build ("radzsmir/springreadyapp")
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
+        stage('Build Docker Image') {
+          steps{
+    	sh 'sudo docker build -t radzsmir/springreadyapp:$BUILD_NUMBER .'
+            echo 'Build Image Completed'
           }
         }
-      }
-    }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $imagename:$BUILD_NUMBER"
-         sh "docker rmi $imagename:latest"
-
-      }
-    }
-  }
+        }
 }
