@@ -21,7 +21,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("springreadyapp","./radzsmir/springreadyapp")
+        app = docker.build("radzsmir/springreadyapp")
     }
 
     stage('Test image') {
