@@ -20,16 +20,17 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
-        app = docker.build("radzsmir/springreadyapp")
+        sh """ docker build -t springreadyapp . """
+        //app = docker.build("radzsmir/springreadyapp")
     }
 
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
-         docker.image('radzsmir/springreadyapp').inside {
-            sh 'make test'
-        }
+        //app.inside {
+            //sh 'echo "Tests passed"'
+        //}
+
     }
 
     }
