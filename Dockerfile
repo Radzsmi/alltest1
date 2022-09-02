@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:19-rc-windowsservercore
 ##ARG JAR_FILE=build/libs/*.jar
 #COPY ${JAR_FILE} springreadyapp.jar
 EXPOSE 8081
