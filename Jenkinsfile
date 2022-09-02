@@ -27,7 +27,7 @@ node {
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
-         docker.image('my-custom-image').inside {
+         docker.image('radzsmir/springreadyapp').inside {
             sh 'make test'
         }
     }
