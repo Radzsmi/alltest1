@@ -1,4 +1,4 @@
-# spring-boot-gradle-inside_docker-jenkins
+# Small test app to see how technologies work together
 
 
 My test application to store *employees* and make them available trough a REST api.
